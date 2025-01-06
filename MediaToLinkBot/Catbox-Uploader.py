@@ -93,7 +93,16 @@ async def catbox_link_convert(bot, update, edit):
 
 @Client.on_message(filters.command('start') & filters.private)
 async def start_command(client, message):
-    await message.reply_text("I Am Media To Link Convert Bot.")
+    button = InlineKeyboardMarkup([[
+        InlineKeyboardButton('Uᴩᴅᴀᴛᴇꜱ', url='https://t.me/RknDeveloper'),
+        InlineKeyboardButton('Sᴜᴩᴩᴏʀᴛ', url='https://t.me/RknBots_Support')
+        ],[
+        #InlineKeyboardButton('🎛️ Aʙᴏᴜᴛ', callback_data='about'),
+        #InlineKeyboardButton('🛠️ Hᴇʟᴩ', callback_data='help')
+        #],[
+        InlineKeyboardButton('ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url="https://t.me/+klNh8N3hXjM1MDFk")
+    ]])
+    await message.reply_text("I Am Media To Link Convert Bot.", reply_markup=button)
 
 async def file_size_function(update):
     try:
@@ -107,9 +116,6 @@ async def file_size_function(update):
         
 @Client.on_message(filters.media & filters.private)
 async def getmedia(bot, update):
-    if "https://" in update.text:
-        return 
-        
     if await file_size_function(update):
         return await update.reply_text("sᴏʀʀʏ ᴅᴜᴅᴇ, ᴛʜɪs ʙᴏᴛ ᴅᴏᴇsɴ'ᴛ sᴜᴘᴘᴏʀᴛ ғɪʟᴇs ʟᴀʀɢᴇʀ ᴛʜᴀɴ 200 ᴍʙ+")
        
