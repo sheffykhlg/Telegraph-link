@@ -15,6 +15,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "") # input bot token
 
 # other configs
 BOT_UPTIME = time.time()
+PORT = int(os.environ.get('PORT', '8080')) # input PORT
 ADMIN = int(os.environ.get('ADMIN', '0')) # input user id
 
 class ImageToLinkBot(Client):
@@ -38,7 +39,7 @@ class ImageToLinkBot(Client):
         
         app = web.AppRunner(await web_server())
         await app.setup()       
-        await web.TCPSite(app, "0.0.0.0", 8080).start()
+        await web.TCPSite(app, "0.0.0.0", PORT).start()
             
         print(f"{me.first_name} Started.....✨️")
         if ADMIN:
