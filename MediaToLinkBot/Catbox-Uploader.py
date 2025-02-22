@@ -13,6 +13,8 @@ RKN_PROGRESS = """<b>\n
 ┣⪼ ⏳️ ᴅᴏɴᴇ : {0}%
 ┣⪼ 🚀 ꜱᴩᴇᴇᴅ: {3}/s
 ┣⪼ ⏰️ ᴇᴛᴀ: {4}
+┣⪼ 😍 ᴅᴇᴠᴇʟᴏᴘᴇʀ - @sʜᴇғғʏsᴀᴍʀᴀ
+┣⪼ 🛠️ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ - @sʜᴇғғʏsᴀᴍʀᴀ
 ╰━━━━━━━━━━━━━━━➣ </b>"""
 
 async def progress_for_pyrogram(current, total, ud_type, message, start):
@@ -94,15 +96,15 @@ async def catbox_link_convert(bot, update, edit):
 @Client.on_message(filters.command('start') & filters.private)
 async def start_command(client, message):
     button = InlineKeyboardMarkup([[
-        InlineKeyboardButton('Uᴩᴅᴀᴛᴇꜱ', url='https://t.me/RknDeveloper'),
-        InlineKeyboardButton('Sᴜᴩᴩᴏʀᴛ', url='https://t.me/RknBots_Support')
+        InlineKeyboardButton('🌹Uᴩᴅᴀᴛᴇꜱ', url='https://t.me/+3MvIV0RlI5A2NTY1'),
+        InlineKeyboardButton('☺️Sᴜᴩᴩᴏʀᴛ', url='https://t.me/Neha_crown_bot')
         ],[
-        #InlineKeyboardButton('🎛️ Aʙᴏᴜᴛ', callback_data='about'),
-        #InlineKeyboardButton('🛠️ Hᴇʟᴩ', callback_data='help')
-        #],[
-        InlineKeyboardButton('ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url="https://t.me/+klNh8N3hXjM1MDFk")
+        InlineKeyboardButton('🎛️ Aʙᴏᴜᴛ', callback_data='about'),
+        InlineKeyboardButton('🛠️ Hᴇʟᴩ', callback_data='help')
+        ],[
+        InlineKeyboardButton('💯Join Updates Channel💝', url="https://t.me/+3MvIV0RlI5A2NTY1")
     ]])
-    await message.reply_text("I Am Media To Link Convert Bot.", reply_markup=button)
+    await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\nᴍʏ ᴏᴡɴᴇʀ - @sʜᴇғғʏssᴀᴍʀᴀ\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @sʜᴇғғʏssᴀᴍʀᴀ.", reply_markup=button)
 
 async def file_size_function(update):
     try:
@@ -117,7 +119,7 @@ async def file_size_function(update):
 @Client.on_message(filters.media & filters.private)
 async def getmedia(bot, update):
     if await file_size_function(update):
-        return await update.reply_text("sᴏʀʀʏ ᴅᴜᴅᴇ, ᴛʜɪs ʙᴏᴛ ᴅᴏᴇsɴ'ᴛ sᴜᴘᴘᴏʀᴛ ғɪʟᴇs ʟᴀʀɢᴇʀ ᴛʜᴀɴ 200 ᴍʙ+")
+        return await update.reply_text("🥴sᴏʀʀʏ ᴅᴜᴅᴇ, ᴛʜɪs ʙᴏᴛ ᴅᴏᴇsɴ'ᴛ sᴜᴘᴘᴏʀᴛ ғɪʟᴇs ʟᴀʀɢᴇʀ ᴛʜᴀɴ 200 ᴍʙ+😑")
        
     message = await update.reply_text(
             text="`Processing...`",
@@ -127,10 +129,10 @@ async def getmedia(bot, update):
     link = await catbox_link_convert(bot, update, message)
     reply_markup=InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="Open Link", url=f"{link}"),
-        InlineKeyboardButton(text="Share Link", url=f"https://telegram.me/share/url?url={link}")
+        InlineKeyboardButton(text="🌞Open Link💞", url=f"{link}"),
+        InlineKeyboardButton(text="🖇️Share Link🙏", url=f"https://telegram.me/share/url?url={link}")
         ],[
-        InlineKeyboardButton(text="Join Updates Channel", url="https://telegram.me/RknDeveloper")
+        InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/+3MvIV0RlI5A2NTY1")
         ]])   
     await message.edit_text(
         text=f"Link: `{link}`",
