@@ -11,7 +11,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 # pyro client config
 API_ID    = os.environ.get("API_ID", "20589413") # input api id
 API_HASH  = os.environ.get("API_HASH", "654d559a9a91daeecd9e760fc73e6766") # input api hash
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7441315027:AAEfcoSuD_Cz7p_OoV0oVYe4-5irG5S6G2M") # input bot token
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7629957129:AAH-xpy8KTg1gXoOxb8PJCBJVIOSs7gS64A") # input bot token
 
 # other configs
 BOT_UPTIME = time.time()
