@@ -13,8 +13,8 @@ RKN_PROGRESS = """<b>\n
 ┣⪼ ⏳️ ᴅᴏɴᴇ : {0}%
 ┣⪼ 🚀 ꜱᴩᴇᴇᴅ: {3}/s
 ┣⪼ ⏰️ ᴇᴛᴀ: {4}
-┣⪼ 😍 ᴅᴇᴠᴇʟᴏᴘᴇʀ - @sʜᴇғғʏsᴀᴍʀᴀ
-┣⪼ 🛠️ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ - @sʜᴇғғʏsᴀᴍʀᴀ
+┣⪼ 😍 ᴅᴇᴠᴇʟᴏᴘᴇʀ - @Sheffyssamra
+┣⪼ 🛠️ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ - @Sheffyssamra
 ╰━━━━━━━━━━━━━━━➣ </b>"""
 
 async def progress_for_pyrogram(current, total, ud_type, message, start):
@@ -104,7 +104,7 @@ async def start_command(client, message):
         ],[
         InlineKeyboardButton('💯Join Updates Channel💝', url="https://t.me/+3MvIV0RlI5A2NTY1")
     ]])
-    await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\nᴍʏ ᴏᴡɴᴇʀ - @sʜᴇғғʏssᴀᴍʀᴀ\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @sʜᴇғғʏssᴀᴍʀᴀ.", reply_markup=button)
+    await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\n\nᴍʏ ᴏᴡɴᴇʀ - @Sheffyssamra\n\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @Sheffyssamra.", reply_markup=button)
 
 async def file_size_function(update):
     try:
@@ -135,7 +135,7 @@ async def getmedia(bot, update):
         InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/+3MvIV0RlI5A2NTY1")
         ]])   
     await message.edit_text(
-        text=f"Link: `{link}`",
+        text=f"ᴛʜɪs ɪs ʏᴏᴜʀ ʟɪɴᴋ\n\nᴛʜᴀɴx 🙂 ғᴏʀ ᴜsɪɴɢ ᴍᴇ ɪ ᴋɴᴏᴡ ɪ ᴍ ʙᴇsᴛ ғᴏʀ ᴜ ᴅᴏɴᴛ ғᴏʀɢᴇᴛ ᴛᴏ sʜᴀʀᴇ ᴡɪᴛʜ ғʀɪɴᴇᴅ ᴀɴᴅ ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ ʟᴏᴠᴇ ᴜ 💝\n\nLink: `{link}`",
         disable_web_page_preview=False,
         reply_markup=reply_markup)
        
