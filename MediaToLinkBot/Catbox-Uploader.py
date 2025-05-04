@@ -71,11 +71,14 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            await message.edit(text=f"{ud_type}\nUpload failed. Please try again.")
+    await message.edit(
+        text=f"""{ud_type}
+Upload failed. Please try again.
 
-{tmp}")
-        except:
-            pass
+{tmp}"""
+    )
+except:
+    pass
 
 async def catbox_link_convert(bot, update, edit):
     ext = ""
