@@ -48,21 +48,26 @@ def TimeFormatter(milliseconds: int) -> str:
     tmp = ((str(days) + "ᴅ, ") if days else "") +         ((str(hours) + "ʜ, ") if hours else "") +         ((str(minutes) + "ᴍ, ") if minutes else "") +         ((str(seconds) + "ꜱ, ") if seconds else "") +         ((str(milliseconds) + "ᴍꜱ, ") if milliseconds else "")
     return tmp[:-2]
 
+
 async def progress_for_pyrogram(current, total, ud_type, message, start):
     now = time.time()
     diff = now - start
+    
     if round(diff % 5.00) == 0 or current == total:
         percentage = current * 100 / total
         speed = current / diff
         elapsed_time = round(diff) * 1000
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
+        
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
+        
         progress = "{0}{1}".format(
             ''.join(["▣" for i in range(math.floor(percentage / 5))]),
             ''.join(["▢" for i in range(20 - math.floor(percentage / 5))])
         )
+        
         tmp = progress + RKN_PROGRESS.format(
             round(percentage, 2),
             humanbytes(current),
@@ -70,15 +75,17 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
             humanbytes(speed),
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
+        
         try:
-    await message.edit(
-        text=f"""{ud_type}
+            await message.edit(
+                text=f"""{ud_type}
 Upload failed. Please try again.
 
 {tmp}"""
-    )
-except:
-    pass
+            )
+        except Exception as e:
+            print(f"Error: {e}")
+            pass
 
 async def catbox_link_convert(bot, update, edit):
     ext = ""
