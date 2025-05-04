@@ -104,7 +104,7 @@ async def start_command(client, message):
         ],[
         InlineKeyboardButton('💯Join Updates Channel💝', url="https://t.me/+3MvIV0RlI5A2NTY1")
     ]])
-    await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\n\nᴍʏ ᴏᴡɴᴇʀ - @Sheffyssamra\n\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @Sheffyssamra.", reply_markup=button)
+    await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\n\nᴍʏ ᴏᴡɴᴇʀ - @Sheffysamra1\n\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @Sheffysamra1.", reply_markup=button)
 
 async def file_size_function(update):
     try:
@@ -120,20 +120,24 @@ async def file_size_function(update):
 async def getmedia(bot, update):
     if await file_size_function(update):
         return await update.reply_text("🥴sᴏʀʀʏ ᴅᴜᴅᴇ, ᴛʜɪs ʙᴏᴛ ᴅᴏᴇsɴ'ᴛ sᴜᴘᴘᴏʀᴛ ғɪʟᴇs ʟᴀʀɢᴇʀ ᴛʜᴀɴ 200 ᴍʙ+😑")
+
+    await bot.send_chat_action(update.chat.id, "typing")
        
     message = await update.reply_text(
-            text="`Processing...`",
+            text="🔄 `Processing your file...`\n⏳ Please wait while I upload...",
             quote=True,
             disable_web_page_preview=True
         )
     link = await catbox_link_convert(bot, update, message)
-    reply_markup=InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton(text="🌞Open Link💞", url=f"{link}"),
-        InlineKeyboardButton(text="🖇️Share Link🙏", url=f"https://telegram.me/share/url?url={link}")
-        ],[
-        InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/+3MvIV0RlI5A2NTY1")
-        ]])   
+    reply_markup = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(text="🌞Open Link💞", url=f"{link}"),
+            InlineKeyboardButton(text="🖇️Share Link🙏", url=f"https://telegram.me/share/url?url={link}")
+        ],
+        [
+            InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/ssbotz")
+        ]
+    ])   
     await message.edit_text(
         text=f"ᴛʜɪs ɪs ʏᴏᴜʀ ʟɪɴᴋ\n\nᴛʜᴀɴx 🙂 ғᴏʀ ᴜsɪɴɢ ᴍᴇ ɪ ᴋɴᴏᴡ ɪ ᴍ ʙᴇsᴛ ғᴏʀ ᴜ ᴅᴏɴᴛ ғᴏʀɢᴇᴛ ᴛᴏ sʜᴀʀᴇ ᴡɪᴛʜ ғʀɪɴᴇᴅ ᴀɴᴅ ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ ʟᴏᴠᴇ ᴜ 💝\n\nLink: `{link}`",
         disable_web_page_preview=False,
