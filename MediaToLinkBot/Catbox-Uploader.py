@@ -5,7 +5,19 @@ from pyrogram.raw.all import layer
 import os, time, re, math
 from catbox import CatboxUploader
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+FORCE_CHANNEL = "ssbotz"  # Apne update channel ka username (without @)
 
+from pyrogram.errors import UserNotParticipant
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+async def is_subscribed(client, user_id):
+    try:
+        member = await client.get_chat_member(FORCE_CHANNEL, user_id)
+        return member.status in ("member", "administrator", "creator")
+    except UserNotParticipant:
+        return False
+    except Exception:
+        return False
 
 RKN_PROGRESS = """<b>\n
 ╭━━━━❰RKN PROCESSING...❱━➣
@@ -95,6 +107,19 @@ async def catbox_link_convert(bot, update, edit):
 
 @Client.on_message(filters.command('start') & filters.private)
 async def start_command(client, message):
+    if not await is_subscribed(client, message.from_user.id):
+        try:
+            invite_link = await client.export_chat_invite_link(FORCE_CHANNEL)
+        except Exception:
+            invite_link = f"https://t.me/{FORCE_CHANNEL}"
+
+        button = InlineKeyboardMarkup([
+            [InlineKeyboardButton("💠 Join Update Channel 💠", url=invite_link)]
+        ])
+        return await message.reply_text(
+            "**🚫 First join the update channel to use me!**",
+            reply_markup=button
+        )
     button = InlineKeyboardMarkup([[
         InlineKeyboardButton('🌹Uᴩᴅᴀᴛᴇꜱ', url='https://t.me/+3MvIV0RlI5A2NTY1'),
         InlineKeyboardButton('☺️Sᴜᴩᴩᴏʀᴛ', url='https://t.me/Neha_crown_bot')
