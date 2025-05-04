@@ -71,7 +71,7 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            await message.edit(text=f"{ud_type}
+            await message.edit(text=f"{ud_type}\nUpload failed. Please try again.")
 
 {tmp}")
         except:
