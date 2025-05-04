@@ -19,15 +19,15 @@ async def is_subscribed(client, user_id):
     except Exception:
         return False
 
-RKN_PROGRESS = """<b>\n
-╭━━━━❰RKN PROCESSING...❱━➣
-┣⪼ 🗃️ ꜱɪᴢᴇ: {1} | {2}
-┣⪼ ⏳️ ᴅᴏɴᴇ : {0}%
-┣⪼ 🚀 ꜱᴩᴇᴇᴅ: {3}/s
-┣⪼ ⏰️ ᴇᴛᴀ: {4}
-┣⪼ 😍 ᴅᴇᴠᴇʟᴏᴘᴇʀ - @Sheffyssamra
-┣⪼ 🛠️ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ - @Sheffyssamra
-╰━━━━━━━━━━━━━━━➣ </b>"""
+RKN_PROGRESS = """<b>
+╭━━━━❰ ʀᴋɴ ᴏᴘᴇʀᴀᴛɪᴏɴ ꜱᴛᴀʀᴛᴇᴅ! ❱━➣
+┣⪼ 🗃️ ꜱɪᴢᴇ ʙᴀᴛᴀᴜ: {1} | {2}
+┣⪼ ⏳ ᴋᴀᴀᴍ ᴄʜᴀʟ ʀʜᴀ ʜᴀɪ : {0}%
+┣⪼ 🚀 ꜱᴘᴇᴇᴅ ɪꜱ ғʟʏɪɴɢ: {3}/s
+┣⪼ ⏰ ʜᴏ ᴊᴀʏᴇɢᴀ ɪɴ: {4}
+┣⪼ 🤖 ᴅᴇᴠᴛᴀ - @Sheffyssamra
+┣⪼ 🛠️ ᴛᴇᴄʜɴɪᴄᴀʟ ᴋᴀᴀʀɪɢᴀʀ - @Sheffyssamra
+╰━━━━━━━❰ ᴛʜᴏᴅᴀ ʀᴜᴋ ᴊᴀ ʙʀᴏ... ❱━━━━━➣ </b>"""
 
 async def progress_for_pyrogram(current, total, ud_type, message, start):
     now = time.time()
@@ -121,14 +121,14 @@ async def start_command(client, message):
             reply_markup=button
         )
     button = InlineKeyboardMarkup([[
-        InlineKeyboardButton('🌹Uᴩᴅᴀᴛᴇꜱ', url='https://t.me/+3MvIV0RlI5A2NTY1'),
-        InlineKeyboardButton('☺️Sᴜᴩᴩᴏʀᴛ', url='https://t.me/Neha_crown_bot')
-        ],[
-        InlineKeyboardButton('🎛️ Aʙᴏᴜᴛ', callback_data='about'),
-        InlineKeyboardButton('🛠️ Hᴇʟᴩ', callback_data='help')
-        ],[
-        InlineKeyboardButton('💯Join Updates Channel💝', url="https://t.me/+3MvIV0RlI5A2NTY1")
-    ]])
+    InlineKeyboardButton('🌹 Cʜᴀʟ ʙʜᴀɪ - Uᴘᴅᴀᴛᴇ ᴅᴇᴋʜ!', url='https://t.me/+3MvIV0RlI5A2NTY1'),
+    InlineKeyboardButton('☺️ Aʙᴇ ʜᴇʟᴘ ᴄʜᴀʜɪᴇ? Sᴜᴘᴘᴏʀᴛ ʏᴀʀ!', url='https://t.me/Neha_crown_bot')
+],[
+    InlineKeyboardButton('🎛️ Kᴏɴ ʜᴜ ʙʜᴀɪ - Aʙᴏᴜᴛ ᴘᴀᴅʜ ʟᴇ', callback_data='about'),
+    InlineKeyboardButton('🛠️ ᴋʏᴀ ᴄʜᴀʜɪᴇ ʙᴏʟ - Hᴇʟᴘ ʟᴇ ʙʀᴏ', callback_data='help')
+],[
+    InlineKeyboardButton('💯 Jᴏɪɴ ᴋᴀʀ ʀᴇ - Uᴘᴅᴀᴛᴇs Wᴀʟɪ Fᴀᴍ', url="https://t.me/ssbotz")
+]])
     await message.reply_text("ʜᴇʏ ɪ ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ʙᴏᴛ\nɪ ᴍ ᴀɴʏ ᴠᴇᴅɪᴏ, ɪᴍɢ , ᴍᴘ𝟹, ɢɪғ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ʟɪɴᴋ\nsʜᴀʀᴇ ᴡɪᴛʜ ᴜ ʀ ғʀɪᴇɴᴅs 😄\n\nᴍʏ ᴏᴡɴᴇʀ - @Sheffyssamra\n\nᴍʏ ᴍᴀɪɴᴛᴀɪɴᴇʀ - @Sheffyssamra.", reply_markup=button)
 
 async def file_size_function(update):
@@ -157,7 +157,7 @@ async def getmedia(bot, update):
         InlineKeyboardButton(text="🌞Open Link💞", url=f"{link}"),
         InlineKeyboardButton(text="🖇️Share Link🙏", url=f"https://telegram.me/share/url?url={link}")
         ],[
-        InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/+3MvIV0RlI5A2NTY1")
+        InlineKeyboardButton(text="💯Join Updates Channel💝", url="https://t.me/ssbotz")
         ]])   
     await message.edit_text(
         text=f"ᴛʜɪs ɪs ʏᴏᴜʀ ʟɪɴᴋ\n\nᴛʜᴀɴx 🙂 ғᴏʀ ᴜsɪɴɢ ᴍᴇ ɪ ᴋɴᴏᴡ ɪ ᴍ ʙᴇsᴛ ғᴏʀ ᴜ ᴅᴏɴᴛ ғᴏʀɢᴇᴛ ᴛᴏ sʜᴀʀᴇ ᴡɪᴛʜ ғʀɪɴᴇᴅ ᴀɴᴅ ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ ʟᴏᴠᴇ ᴜ 💝\n\nLink: `{link}`",
