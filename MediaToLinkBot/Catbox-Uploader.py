@@ -1,20 +1,20 @@
 from datetime import datetime
 from pytz import timezone
-from pyrogram import Client, __version__, filters
-from pyrogram.raw.all import layer
+from pyrogram import Client, filters
 import os, time, re, math
 from catbox import CatboxUploader
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-FORCE_CHANNEL = "ssbotz"  # Apne update channel ka username (without @)
+from pyrogram.errors import UserNotParticipant, PeerIdInvalid
 
-from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+FORCE_CHANNEL = "ssbotz"
 
 async def is_subscribed(client, user_id):
     try:
         member = await client.get_chat_member(FORCE_CHANNEL, user_id)
         return member.status in ("member", "administrator", "creator")
     except UserNotParticipant:
+        return False
+    except PeerIdInvalid:
         return False
     except Exception:
         return False
@@ -29,36 +29,7 @@ RKN_PROGRESS = """<b>
 ┣⪼ 🛠️ ᴛᴇᴄʜɴɪᴄᴀʟ ᴋᴀᴀʀɪɢᴀʀ - @Sheffyssamra
 ╰━━━━━━━❰ ᴛʜᴏᴅᴀ ʀᴜᴋ ᴊᴀ ʙʀᴏ... ❱━━━━━➣ </b>"""
 
-async def progress_for_pyrogram(current, total, ud_type, message, start):
-    now = time.time()
-    diff = now - start
-    if round(diff % 5.00) == 0 or current == total:        
-        percentage = current * 100 / total
-        speed = current / diff
-        elapsed_time = round(diff) * 1000
-        time_to_completion = round((total - current) / speed) * 1000
-        estimated_total_time = elapsed_time + time_to_completion
-
-        elapsed_time = TimeFormatter(milliseconds=elapsed_time)
-        estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
-
-        progress = "{0}{1}".format(
-            ''.join(["▣" for i in range(math.floor(percentage / 5))]),
-            ''.join(["▢" for i in range(20 - math.floor(percentage / 5))])
-        )            
-        tmp = progress + RKN_PROGRESS.format( 
-            round(percentage, 2),
-            humanbytes(current),
-            humanbytes(total),
-            humanbytes(speed),            
-            estimated_total_time if estimated_total_time != '' else "0 s"
-        )
-        try:
-            await message.edit(text=f"{ud_type}\n\n{tmp}")                         
-        except:
-            pass
-
-def humanbytes(size):    
+def humanbytes(size):
     if not size:
         return ""
     power = 2**10
@@ -74,36 +45,60 @@ def TimeFormatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + "ᴅ, ") if days else "") + \
-        ((str(hours) + "ʜ, ") if hours else "") + \
-        ((str(minutes) + "ᴍ, ") if minutes else "") + \
-        ((str(seconds) + "ꜱ, ") if seconds else "") + \
-        ((str(milliseconds) + "ᴍꜱ, ") if milliseconds else "")
-    return tmp[:-2] 
-    
+    tmp = ((str(days) + "ᴅ, ") if days else "") +         ((str(hours) + "ʜ, ") if hours else "") +         ((str(minutes) + "ᴍ, ") if minutes else "") +         ((str(seconds) + "ꜱ, ") if seconds else "") +         ((str(milliseconds) + "ᴍꜱ, ") if milliseconds else "")
+    return tmp[:-2]
+
+async def progress_for_pyrogram(current, total, ud_type, message, start):
+    now = time.time()
+    diff = now - start
+    if round(diff % 5.00) == 0 or current == total:
+        percentage = current * 100 / total
+        speed = current / diff
+        elapsed_time = round(diff) * 1000
+        time_to_completion = round((total - current) / speed) * 1000
+        estimated_total_time = elapsed_time + time_to_completion
+        elapsed_time = TimeFormatter(milliseconds=elapsed_time)
+        estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
+        progress = "{0}{1}".format(
+            ''.join(["▣" for i in range(math.floor(percentage / 5))]),
+            ''.join(["▢" for i in range(20 - math.floor(percentage / 5))])
+        )
+        tmp = progress + RKN_PROGRESS.format(
+            round(percentage, 2),
+            humanbytes(current),
+            humanbytes(total),
+            humanbytes(speed),
+            estimated_total_time if estimated_total_time != '' else "0 s"
+        )
+        try:
+            await message.edit(text=f"{ud_type}
+
+{tmp}")
+        except:
+            pass
+
 async def catbox_link_convert(bot, update, edit):
     ext = ""
     if update.photo:
-        ext = '.jpg'        
+        ext = '.jpg'
     elif update.video:
-        ext = '.mp4'        
+        ext = '.mp4'
     elif update.document:
-        ext = '.mkv'        
+        ext = '.mkv'
     elif update.audio:
         ext = '.mp3'
-           
     medianame = "download/" + str(update.from_user.id) + ext
     dl_path = await bot.download_media(message=update, progress=progress_for_pyrogram,
-            progress_args=('Uploading Catbox Server', edit, time.time()), file_name=medianame) if ext else await bot.download_media(message=update, progress=progress_for_pyrogram,
-            progress_args=('Uploading Catbox Server', edit, time.time()))
+            progress_args=('Uploading to Catbox Server', edit, time.time()), file_name=medianame) if ext else await bot.download_media(message=update, progress=progress_for_pyrogram,
+            progress_args=('Uploading to Catbox Server', edit, time.time()))
     uploader = CatboxUploader()
     link = uploader.upload_file(dl_path)
-    print(f'Uploaded file: {link}')
     try:
         os.remove(dl_path)
     except:
         pass
     return link
+    
 
 @Client.on_message(filters.command('start') & filters.private)
 async def start_command(client, message):
