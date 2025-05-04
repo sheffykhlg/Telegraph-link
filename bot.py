@@ -16,7 +16,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "8137668104:AAFyonMXElusr_FmszP5flBdWZ61
 # other configs
 BOT_UPTIME = time.time()
 PORT = int(os.environ.get('PORT', '8080')) # input PORT
-ADMIN = int(os.environ.get('ADMIN', '6514361814')) # input user id
+ADMIN = int(os.environ.get('ADMIN', '7893435873')) # input user id
 
 class ImageToLinkBot(Client):
     def __init__(self):
